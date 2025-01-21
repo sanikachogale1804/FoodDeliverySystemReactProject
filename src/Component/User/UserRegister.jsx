@@ -42,6 +42,9 @@ function UserRegister() {
                     <input type="number" className="form-control" id="exampleInputEmail1"
                         aria-describedby="emailHelp" name='userphoneNumber' />
                 </div>
+                 {/* Button to submit form */}
+                 <button type="submit" className="btn btn-primary" >Submit</button>
+
             </form>
         </div>
     )
