@@ -5,6 +5,7 @@ import MenuItems from './MenuItems';
 
 function Menu() {
   let [menuitems, setMenuItems] = useState([]);
+  let[searchQuery,setSearchQuery]=useState("");
  useEffect(() => {
      getMenuItems().then(data => {
      console.log(data);
@@ -44,9 +45,21 @@ function Menu() {
             </ul>
 
           {/* Sort End */}
+
+          {/* Search Start */}
+  <div class="mb-3">
+  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+  onChange={(e)=>{setSearchQuery(e.target.value)}}/>
+  <div id="emailHelp" class="form-text">Search here.</div>
+</div>
+
+  {/* Search end */}
       <div className="row row-cols-1 row-cols-md-3 g-2">
       {
-        menuitems.map(menuItem=>{
+        menuitems.filter((item)=>{
+          return item.name.toLowerCase()
+          .includes(searchQuery.toLowerCase());
+        }).map(menuItem=>{
           return (
             <MenuItems
             name={menuItem.name}
