@@ -12,7 +12,6 @@ function MenuItems({name,price,description}) {
       </div>
     </div>
     </div>
-
   
   )
 }
