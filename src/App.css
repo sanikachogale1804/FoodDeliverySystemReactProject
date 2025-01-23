@@ -1,3 +1,5 @@
+
+
 .App {
   text-align: center;
 }
@@ -36,3 +38,87 @@
     transform: rotate(360deg);
   }
 }
+
+/* Navbar Start */
+
+
+.navbar {
+  background-color:#333;
+}
+
+/* !important :Appear white by default.  */
+.navbar a {
+  color: white !important;
+}
+
+.navbar a:hover {
+  color: #f8a488 !important;
+}
+
+
+.navbar .btn {
+  border-radius: 20px; 
+  font-weight: bold;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.navbar .btn-outline-success {
+  background-color: #28a745; /* Green background */
+  color: rgb(22, 18, 18);
+  border: 1px solid #28a745;
+}
+
+.navbar .btn-outline-success:hover {
+  background-color: #218838; /* Darker green on hover */
+  color: #0a0909;
+  border-color: #1e7e34;
+}
+
+/* Navbar End */
+
+/* Main */
+
+
+.main {
+  position: relative;
+  background-image: url('./img/image.png');
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  filter: brightness(70%);
+}
+
+.main-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.main-text {
+  position: relative;
+  z-index: 1;
+}
+/* Main End */
+
+/* Card */
+
+.card {
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+  transition: transform 0.5s ease;
+  display: block;
+}
+
+/* Card end */
+
