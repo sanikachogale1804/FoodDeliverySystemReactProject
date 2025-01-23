@@ -13,7 +13,6 @@ function Menu() {
    },[])
 
    //to sort data
-
    const sort = async (choice) => {
 
     switch (choice) {
@@ -32,8 +31,6 @@ function Menu() {
     }
   }
 
-
-
   return (
 
     <div>
@@ -46,7 +43,7 @@ function Menu() {
               <li className="list-group-item" onClick={() => {sort(4)}}>High to Low</li>
             </ul>
 
-            {/* Sort End */}
+          {/* Sort End */}
       <div className="row row-cols-1 row-cols-md-3 g-2">
       {
         menuitems.map(menuItem=>{
