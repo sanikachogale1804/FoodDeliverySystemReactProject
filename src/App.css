@@ -39,8 +39,12 @@
   }
 }
 
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+}
 /* Navbar Start */
-
 
 .navbar {
   background-color:#333;
@@ -107,18 +111,318 @@
   position: relative;
   z-index: 1;
 }
+
+.btn-primary {
+  background-color: #182730;
+  border-color: #1e2d47;
+}
+
+.btn-primary:hover {
+  background-color: #0f0c0a;
+  border-color: #0a1114;
+}
 /* Main End */
 
 /* Card */
 
 .card {
   border: none;
-  border-radius: 10px;
   overflow: hidden;
-   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
   transition: transform 0.5s ease;
+}
+
+
+.card:hover {
+  transform: translateY(-10px);
+} 
+
+.card-img-top {
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+
+.card-img-top:hover {
+  transform: scale(1.1);
+}
+
+/* Card */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* !important :Appear white by default.  */
+.navbar a {
+  color: white !important;
+}
+
+.navbar a:hover {
+  color: #f8a488 !important;
+}
+
+
+.navbar .btn {
+  border-radius: 20px; 
+  font-weight: bold;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.navbar .btn-outline-success {
+  background-color: #28a745; /* Green background */
+  color: rgb(22, 18, 18);
+  border: 1px solid #28a745;
+}
+
+.navbar .btn-outline-success:hover {
+  background-color: #218838; /* Darker green on hover */
+  color: #0a0909;
+  border-color: #1e7e34;
+}
+
+/* Navbar End */
+
+/* Main */
+
+
+.main {
+  position: relative;
+  background-image: url('./img/image.png');
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  filter: brightness(70%);
+}
+
+.main-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.main-text {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-primary {
+  background-color: #f8a488;
+  border-color: #f8a488;
+}
+
+.btn-primary:hover {
+  background-color: #d67d4d;
+  border-color: #d67d4d;
+}
+/* Main End */
+
+/* Card */
+.menu-card {
+  border: none;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 10px;  /* Rounded corners */
+  margin: 20px;
+}
+
+.menu-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.menu-img {
+  height: 220px;
+  width:500px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  border-radius: 10px 10px 0 0;  /* Rounded top corners */
+}
+
+.menu-img:hover {
+  transform: scale(1.05);
+}
+
+/* Card Body Styling */
+.menu-name {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.menu-price {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #f8a488;  
+  margin-bottom: 10px;
+}
+
+.menu-description {
+  font-size: 0.875rem;
+  color: #6c757d;
+  margin-bottom: 15px;
+}
+
+/* Button Styles */
+.menu-btn {
+  background-color: rgb(55, 55, 148);
+  border-color: skyblue;
+  border-radius: 20px;
+  font-weight: bold;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.menu-btn:hover {
+  background-color: #d67d4d;
+  border-color: #d67d4d;
+}
+
+/* Responsive Grid Adjustments */
+@media (max-width: 767px) {
+  .menu-card {
+    margin: 10px 0;
+  }
+
+  .menu-name {
+    font-size: 1.125rem;
+  }
+
+  .menu-price {
+    font-size: 0.9rem;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.register-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #4e73df, #1c9c89, #6a4c8c);
+  font-family: 'Arial', sans-serif;
+  
+}
+
+/* Form Wrapper */
+.form-wrapper {
+  background-color: white;
+  padding: 40px;
+  width: 440px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  text-align: center;
+  opacity: 0.95; 
+}
+
+.form-header {
+  margin-bottom: 30px;
+}
+
+.form-header h2 {
+  font-family: 'Instagram', sans-serif;
+  font-size: 36px;
+  font-weight: bold;
+  color: #6a4c8c; /* Purple for the header */
+}
+
+.form-header p {
+  font-size: 16px;
+  color: #9B9B9B;
+  margin-top: 5px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group label {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 5px;
   display: block;
 }
 
-/* Card end */
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #dbdbdb;
+  border-radius: 8px;
+  background-color: #fafafa;
+  transition: border-color 0.3s;
+}
 
+.form-group input:focus {
+  outline: none;
+  border-color: #6a4c8c; /* Purple focus color */
+}
+
+/* Button Styling */
+.submit-btn {
+  background-color: #4e73df; /* Blue for the button */
+  color: white;
+  border: none;
+  padding: 14px;
+  width: 100%;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-btn:hover {
+  background-color: #1c9c89; /* Teal when hovered */
+  transform: scale(1.05); /* Slight scaling effect */
+}
+
+.submit-btn:active {
+  background-color: #4e73df; /* Return to original blue color on click */
+}
+
+/* Footer Link */
+.form-footer {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #9B9B9B;
+}
+
+.form-footer a {
+  color: #4e73df; /* Blue color to match the button */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.form-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .form-wrapper {
+      width: 90%;
+      padding: 30px;
+  }
+
+  .submit-btn {
+      padding: 12px;
+  }
+}

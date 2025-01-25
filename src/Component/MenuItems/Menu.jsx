@@ -5,10 +5,10 @@ import MenuItems from './MenuItems';
 
 function Menu() {
   let [menuitems, setMenuItems] = useState([]);
-  let[searchQuery,setSearchQuery]=useState("");
+  let [searchQuery,setSearchQuery]=useState("");
  useEffect(() => {
      getMenuItems().then(data => {
-     console.log(data);
+     console.log(data); 
        setMenuItems(data);
      })
    },[])
@@ -65,6 +65,7 @@ function Menu() {
             name={menuItem.name}
             price={menuItem.price}
             description={menuItem.description}
+            image={menuItem._links.self.href}
             />
           )
 
@@ -78,31 +79,3 @@ function Menu() {
 
 export default Menu
 
-
-// function Menu() {
-
-//   let [menuItems, setMenuItems] = useState([]);
-//   useEffect(() => {
-//     getMenuItems().then(data => {
-//       console.log(data);
-//       setMenuItems(data);
-//     })
-//   })
-
-  
-//       return (
-
-//         {
-//           menuItems.map((m) => {
-//         <MenuItems
-//           name={m.name}
-//           price={m.price}
-//           description={m.description}
-//         />
-//       )
-//     })
-//   }
-
-// }
-
-// export default Menu

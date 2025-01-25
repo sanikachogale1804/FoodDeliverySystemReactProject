@@ -17,7 +17,7 @@ const routes=createBrowserRouter([
 },
 {
   path:"/userregister",
-  element:<UserRegister/>
+  element:<><Navbar/><UserRegister/></>
 },
 {
   path:"/restaurantregister",

@@ -1,18 +1,26 @@
-import React from 'react'
 
-function MenuItems({name,price,description}) {   
+
+function MenuItems({ name, price, description ,image}) {
   return (
 
-    <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">{name}</h5>
-        <p class="card-text">{price}</p>
-        <p class="card-text">{description}</p>
+    <div className="col-md-4 mb-4">
+    <div className="card menu-card">
+      <img 
+        src={`${image}/image`} 
+        className="card-img-top menu-img" 
+        alt={`Food item: ${name}`} 
+      />
+      <div className="card-body">
+        <h5 className="card-title menu-name">{name}</h5>
+        <p className="card-text menu-price">{price}</p>
+        <p className="card-text menu-description">
+          <small className="text-muted">{description}</small>
+        </p>
+        <a href="#" className="btn btn-primary btn-lg menu-btn">Browse Menu</a>
       </div>
     </div>
-    </div>
-  
+  </div>
+   
   )
 }
 
