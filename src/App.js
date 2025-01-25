@@ -38,7 +38,7 @@ const routes=createBrowserRouter([
 },
 {
   path:"menuItemForm",
-  element:<MenuItemForm/>
+  element:<><Navbar/><MenuItemForm/></>
 }])
 
 function App() {

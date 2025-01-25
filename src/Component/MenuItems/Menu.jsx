@@ -66,6 +66,7 @@ function Menu() {
             price={menuItem.price}
             description={menuItem.description}
             image={menuItem._links.self.href}
+            menuItem_link={menuItem._links.self.href}
             />
           )
 

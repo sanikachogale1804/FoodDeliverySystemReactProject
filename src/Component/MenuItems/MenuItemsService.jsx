@@ -40,3 +40,10 @@ export const addMenuItem=(menuItem)=>{
         "Content-Type":"application/json"
     },body:JSON.stringify(menuItem)}).then(data=>data.json()).then(data=>data)
 }
+
+export const getMenuItemsById=(menuItem_link)=>{
+    return fetch(menuItem_link)
+    .then(data=>data.json())
+    .then(data=>data)
+
+}

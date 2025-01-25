@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { addMenuItem } from './MenuItemsService'
 
-function MenuItemForm() {
+function MenuItemForm(menuItem_link) {
     const[Item,setItem]=useState(null);
     const submitHandler=(e)=>{
         e.preventDefault();
@@ -12,8 +12,13 @@ function MenuItemForm() {
             description:e.target.description.value
         }).then((data)=>{
             setItem(data)
-        })
+        })   
     }
+
+    const onSelectUpdate=(link)=>{
+     console.log(link)
+    }
+
     return (
 
             <div className="container">
@@ -41,6 +46,8 @@ function MenuItemForm() {
                 </div>
                 
                 <button type="submit" className="btn-submit">Submit</button>
+                {/* Update button */}
+                <button type="submit" className="btn-danger" onClick={()=>{onSelectUpdate(menuItem_link)}}>Update</button>
             </form>
         </div>
      
