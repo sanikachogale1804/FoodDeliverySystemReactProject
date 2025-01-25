@@ -1,3 +1,5 @@
+import { data } from "react-router-dom";
+
 const API_Link="http://localhost:8080/menuItems"
 
 export const getMenuItems=()=>{
@@ -32,3 +34,9 @@ export const findByOrderByPriceDesc=()=>
             .then(data=>data.json())  
             .then(data=>data["_embedded"]["menuItems"])
         }
+
+export const addMenuItem=(menuItem)=>{
+    return fetch(API_Link,{method:"POST",headers:{
+        "Content-Type":"application/json"
+    },body:JSON.stringify(menuItem)}).then(data=>data.json()).then(data=>data)
+}

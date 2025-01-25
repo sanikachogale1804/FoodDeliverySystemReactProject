@@ -8,6 +8,7 @@ import MenuItemsRegister from './Component/MenuItems/MenuItemsRegister';
 import Main from './Component/Main';
 import MenuItems from './Component/MenuItems/MenuItems';
 import Menu from './Component/MenuItems/Menu';
+import MenuItemForm from './Component/MenuItems/MenuItemForm';
 
 
 const routes=createBrowserRouter([
@@ -34,6 +35,10 @@ const routes=createBrowserRouter([
 {
   path:"menuItems",
   element:<><Navbar/><Menu/></>
+},
+{
+  path:"menuItemForm",
+  element:<MenuItemForm/>
 }])
 
 function App() {
