@@ -3,7 +3,7 @@
 function MenuItems({ name, price, description ,image}) {
   return (
 
-    <div className="col-md-4 mb-4">
+    <div className="Item-container col-md-6 mb-4">
     <div className="card menu-card">
       <img 
         src={`${image}/image`} 

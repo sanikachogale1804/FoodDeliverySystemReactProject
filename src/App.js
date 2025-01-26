@@ -9,6 +9,7 @@ import Main from './Component/Main';
 import MenuItems from './Component/MenuItems/MenuItems';
 import Menu from './Component/MenuItems/Menu';
 import MenuItemForm from './Component/MenuItems/MenuItemForm';
+import UserLogin from './Component/User/UserLogin';
 
 
 const routes=createBrowserRouter([
@@ -39,6 +40,10 @@ const routes=createBrowserRouter([
 {
   path:"menuItemForm",
   element:<><Navbar/><MenuItemForm/></>
+},
+{
+  path:"userlogin",
+  element:<><UserLogin/></>
 }])
 
 function App() {
