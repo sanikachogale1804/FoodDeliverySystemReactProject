@@ -1,0 +1,41 @@
+
+/* Main */
+
+.main {
+  position: relative;
+  background-image: url('../../img/image.png');
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  filter: brightness(70%);
+}
+
+.main-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.main-text {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-primary {
+  background-color: #182730;
+  border-color: #1e2d47;
+}
+
+.btn-primary:hover {
+  background-color: #0f0c0a;
+  border-color: #0a1114;
+}
+/* Main End */

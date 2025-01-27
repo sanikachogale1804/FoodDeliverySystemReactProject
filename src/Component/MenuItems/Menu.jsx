@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { findByOrderByNameAsc, findByOrderByNameDesc, findByOrderByPriceAsc, findByOrderByPriceDesc, getMenuItems } from './MenuItemsService';
+import { findByOrderByNameAsc, findByOrderByNameDesc, findByOrderByPriceAsc, findByOrderByPriceDesc, getMenuItems } from '../Services/MenuItemsService';
 import MenuItems from './MenuItems';
 
 
@@ -65,6 +65,7 @@ function Menu() {
             name={menuItem.name}
             price={menuItem.price}
             description={menuItem.description}
+            
             image={menuItem._links.self.href}
             menuItem_link={menuItem._links.self.href}
           />

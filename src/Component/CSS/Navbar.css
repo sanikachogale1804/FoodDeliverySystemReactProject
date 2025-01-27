@@ -1,0 +1,37 @@
+
+/* Navbar Start */
+
+.navbar {
+    background-color:#333;
+  }
+  
+  /* !important :Appear white by default.  */
+  .navbar a {
+    color: white !important;
+  }
+  
+  .navbar a:hover {
+    color: #f8a488 !important;
+  }
+  
+  
+  .navbar .btn {
+    border-radius: 20px; 
+    font-weight: bold;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .navbar .btn-outline-success {
+    background-color: #28a745; /* Green background */
+    color: rgb(22, 18, 18);
+    border: 1px solid #28a745;
+  }
+  
+  .navbar .btn-outline-success:hover {
+    background-color: #218838; /* Darker green on hover */
+    color: #0a0909;
+    border-color: #1e7e34;
+  }
+  
+  /* Navbar End */

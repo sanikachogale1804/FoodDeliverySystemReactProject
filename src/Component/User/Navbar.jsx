@@ -1,5 +1,7 @@
 import React from 'react'
 
+import nav  from '../CSS/Navbar.css' 
+
 function Navbar() {
     return (
         <div>

@@ -1,0 +1,139 @@
+
+/* Card */
+.container {
+  display: flex;  /* Flex layout for sorting and menu items */
+  gap: 20px;  /* Space between the sorting and menu items */
+  margin: 20px;
+}
+
+/* Sorting Container */
+.sorting-container {
+  width: 500px;  /* Fixed width for sorting options */
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for list items in the sorting section */
+.list-group-item {
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  color: #333;
+  font-weight: bold;
+  padding: 12px 20px;
+  text-align: center;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-bottom: 5px;
+}
+
+.list-group-item:hover {
+  background-color: #f1f1f1;
+  transform: scale(1.05);
+}
+
+.list-group-item:active {
+  background-color: #ddd;
+}
+
+
+.menu-items-container{
+  margin-left: 40px;
+}
+/* Menu Items Container - Grid Layout for 3 images per row */
+.menu-items-container {
+  margin-left: 20px;
+  flex-grow: 1;  /* Take up remaining space */
+  display: grid;  /* Use grid layout for items */
+  grid-template-columns: repeat(3, 1fr);  /* 3 items per row */
+  gap: 10px;  /* Space between the items */
+}
+
+/* Menu Card (Item) Styles */
+.menu-card {
+  width: 300px;  /* Take full width of the grid cell */
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-left: 10px;
+}
+
+.menu-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.menu-img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+  transition: transform 0.3s ease;
+}
+
+.menu-img:hover {
+  transform: scale(1.05);
+}
+
+.menu-name {
+  font-size: 1.4265rem;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.menu-price {
+  font-size: 1.165rem;
+  font-weight: 500;
+  color: black;
+  margin-bottom: 10px;
+}
+
+.menu-description {
+  font-size: 0.875rem;
+  color: #6c757d;
+  margin-bottom: 15px;
+}
+
+.menu-btn {
+  background-color: rgb(55, 55, 148);
+  border-color: skyblue;
+  border-radius: 20px;
+  font-weight: bold;
+  padding: 8px 16px;
+  width: 100%;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.menu-btn:hover {
+  background-color: #d67d4d;
+  border-color: #d67d4d;
+}
+
+/* For mobile view */
+@media (max-width: 767px) {
+  .container {
+    flex-direction: column;  /* Stack items vertically on small screens */
+  }
+
+  .sorting-container {
+    width: 100%;  /* Full width on mobile */
+    margin-bottom: 20px;
+  }
+
+  .menu-items-container {
+    width: 100%;  /* Full width on mobile */
+    grid-template-columns: 1fr;  /* 1 item per row on small screens */
+  }
+
+  .menu-card {
+    width: 100%;  /* Full width on mobile */
+    max-width: 100%;  /* No limit on mobile */
+  }
+}
+/* card end */
+

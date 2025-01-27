@@ -47,3 +47,15 @@ export const getMenuItemsById=(menuItem_link)=>{
     .then(data=>data)
 
 }
+
+export const uploadProductImage=(menuItem_link,file)=>{
+ 
+
+    let formData=new FormData();
+    formData.append("menuItemsImage",file);
+ 
+    return fetch(menuItem_link+"/image",
+        {method:"POST",body:formData})
+        .then(data=>data.text())
+        .then(data=>data)
+}

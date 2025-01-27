@@ -1,6 +1,8 @@
 import React from 'react'
 import MenuItems from './MenuItems/MenuItems'
 
+import main from './CSS/Main.css'
+
 function Main() {
   return (
     <div>
