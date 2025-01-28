@@ -3,10 +3,13 @@ import { addMenuItem, uploadProductImage } from '../Services/MenuItemsService'
 
 import menu from '../CSS/MenuItems.css'
 import MenuItems from './MenuItems';
+import Menu from './Menu';
+
 
 function MenuItemForm(menuItem_link) {
     const [Item, setItem] = useState(null);
     let [menuitems, setMenuItems] = useState([]);
+    let [showForm,setShowForm]=useState(false);
     const submitHandler = (e) => {
         e.preventDefault();
         addMenuItem({
@@ -26,8 +29,14 @@ function MenuItemForm(menuItem_link) {
 
     return (
 
-        <div className="container">
-            {<form onSubmit={submitHandler}>
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+    <div>
+
+        <button className='btn btn-primary mb-3' onClick={()=>{setShowForm((prev)=>!prev)}}>Add Menu</button>
+        { showForm?<form onSubmit={submitHandler} className='w-3 border border-dark p-4'>
                 <h2>Add Menu Items</h2>
 
                 <div className="form-group">
@@ -71,8 +80,19 @@ function MenuItemForm(menuItem_link) {
                 </div>
                 <button type="submit" className="btn-submit">Submit</button>
 
-            </form>}
+            </form>:<></>}
+            
         </div>
+    </div>
+    <div class="col">
+        <Menu/>
+    </div>
+   
+  </div>
+</div>
+        
+       
+        
 
     )
 }
