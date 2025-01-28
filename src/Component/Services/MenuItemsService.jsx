@@ -41,16 +41,7 @@ export const addMenuItem=(menuItem)=>{
     },body:JSON.stringify(menuItem)}).then(data=>data.json()).then(data=>data)
 }
 
-export const getMenuItemsById=(menuItem_link)=>{
-    return fetch(menuItem_link)
-    .then(data=>data.json())
-    .then(data=>data)
-
-}
-
 export const uploadProductImage=(menuItem_link,file)=>{
- 
-
     let formData=new FormData();
     formData.append("menuItemsImage",file);
  
@@ -58,4 +49,12 @@ export const uploadProductImage=(menuItem_link,file)=>{
         {method:"POST",body:formData})
         .then(data=>data.text())
         .then(data=>data)
+}
+
+
+export const getMenuItemsById=(menuItem_link)=>{
+    return fetch(menuItem_link)
+    .then(data=>data.json())
+    .then(data=>data)
+
 }

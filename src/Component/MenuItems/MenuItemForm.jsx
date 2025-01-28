@@ -31,9 +31,7 @@ function MenuItemForm(menuItem_link) {
 
     return (
 
-<div class="container">
-  <div class="row">
-    <div class="col">
+
 
     <div>
 
@@ -67,23 +65,13 @@ function MenuItemForm(menuItem_link) {
                         aria-describedby="emailHelp" name='menuItemsImage'
                     />
                 </div>
-
-                {/* Right side: MenuItems */}
              
                 <button type="submit" className="btn-submit">Submit</button>
 
             </form>:<></>}
             
         </div>
-    </div>
-    <div class="col">
-        <MenuAdmin/>
-    </div>
    
-  </div>
-</div>
-        
-       
         
 
     )

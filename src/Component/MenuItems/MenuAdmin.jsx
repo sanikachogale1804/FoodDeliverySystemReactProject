@@ -2,17 +2,24 @@ import React, { useEffect, useState } from 'react'
 import { findByOrderByNameAsc, findByOrderByNameDesc, findByOrderByPriceAsc, findByOrderByPriceDesc, getMenuItems } from '../Services/MenuItemsService';
 import MenuItems from './MenuItems';
 import MenuItemAdmin from './MenuItemAdmin';
+import MenuItemForm from './MenuItemForm';
 
 
 function MenuAdmin() {
   let [menuitems, setMenuItems] = useState([]);
   let [searchQuery,setSearchQuery]=useState("");
+  let[selectedProduct,setSelectedProduct]=useState(null);
  useEffect(() => {
      getMenuItems().then(data => {
      console.log(data); 
        setMenuItems(data);
      })
    },[])
+
+   const handleSelectProduct=(selectedProduct)=>{
+    setSelectedProduct(selectedProduct)
+    console.log(selectedProduct)
+   }
 
    //to sort data
    const sort = async (choice) => {
@@ -34,6 +41,11 @@ function MenuAdmin() {
   }
 
   return (
+    <>
+    <div className="">
+ <MenuItemForm/>
+
+    </div>
     <div className="container">
     {/* Sorting Section */}
     <div className="sorting-container">
@@ -57,6 +69,8 @@ function MenuAdmin() {
 
     {/* Menu Items Section */}
     <div className="menu-items-container">
+
+
       {menuitems.filter((item) => {
         return item.name.toLowerCase().includes(searchQuery.toLowerCase());
       }).map(menuItem => {
@@ -76,8 +90,10 @@ function MenuAdmin() {
           </>
         );
       })}
+
     </div>
   </div>
+  </>
   )
 }
 
