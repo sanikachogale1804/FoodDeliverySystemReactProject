@@ -8,7 +8,7 @@ import MenuItemForm from './MenuItemForm';
 function MenuAdmin() {
   let [menuitems, setMenuItems] = useState([]);
   let [searchQuery,setSearchQuery]=useState("");
-  let[selectedProduct,setSelectedProduct]=useState(null);
+  let[selectedMenuItem,setSelectedMenuItem]=useState(null);
  useEffect(() => {
      getMenuItems().then(data => {
      console.log(data); 
@@ -16,9 +16,9 @@ function MenuAdmin() {
      })
    },[])
 
-   const handleSelectProduct=(selectedProduct)=>{
-    setSelectedProduct(selectedProduct)
-    console.log(selectedProduct)
+   const handleSelectMenuItem=(selectedMenuItem)=>{
+    setSelectedMenuItem(selectedMenuItem)
+    console.log(selectedMenuItem)
    }
 
    //to sort data
@@ -43,7 +43,7 @@ function MenuAdmin() {
   return (
     <>
     <div className="">
- <MenuItemForm/>
+    <MenuItemForm selectedMenuItem={selectedMenuItem}/>
 
     </div>
     <div className="container">
@@ -81,10 +81,10 @@ function MenuAdmin() {
             name={menuItem.name}
             price={menuItem.price}
             description={menuItem.description}
-            
+            menu_link={menuItem._links.self.href}
+
             image={menuItem._links.self.href}
-            menuItem_link={menuItem._links.self.href}
-            
+            OnSelectMenuItem={handleSelectMenuItem}
           />
           
           </>

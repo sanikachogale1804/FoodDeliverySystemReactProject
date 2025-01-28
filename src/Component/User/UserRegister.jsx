@@ -13,7 +13,7 @@ function UserRegister() {
             phoneNumber:e.target.phoneNumber.value,
             address:e.target.address.value
         }).then(data=>{
-            return data;
+           return data;
         });
         
     }

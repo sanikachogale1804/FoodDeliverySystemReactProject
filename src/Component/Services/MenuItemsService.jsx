@@ -58,3 +58,11 @@ export const getMenuItemsById=(menuItem_link)=>{
     .then(data=>data)
 
 }
+
+
+export const deleteMenuItems=(menuItem_link)=>{
+    console.log(menuItem_link)
+    return fetch(menuItem_link,{method:"DELETE"})
+    .then(data=>data.json())
+    .then(data=>data)
+}
