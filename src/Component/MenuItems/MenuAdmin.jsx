@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { findByOrderByNameAsc, findByOrderByNameDesc, findByOrderByPriceAsc, findByOrderByPriceDesc, getMenuItems } from '../Services/MenuItemsService';
 import MenuItems from './MenuItems';
+import MenuItemAdmin from './MenuItemAdmin';
 
 
-function Menu() {
+function MenuAdmin() {
   let [menuitems, setMenuItems] = useState([]);
   let [searchQuery,setSearchQuery]=useState("");
  useEffect(() => {
@@ -61,7 +62,7 @@ function Menu() {
       }).map(menuItem => {
         return (
           <>
-          <MenuItems
+          <MenuItemAdmin
             key={menuItem.id}
             name={menuItem.name}
             price={menuItem.price}
@@ -80,5 +81,5 @@ function Menu() {
   )
 }
 
-export default Menu
+export default MenuAdmin
 

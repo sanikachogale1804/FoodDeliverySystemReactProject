@@ -4,6 +4,8 @@ import { addMenuItem, uploadProductImage } from '../Services/MenuItemsService'
 import menu from '../CSS/MenuItems.css'
 import MenuItems from './MenuItems';
 import Menu from './Menu';
+import MenuItemAdmin from './MenuItemAdmin';
+import MenuAdmin from './MenuAdmin';
 
 
 function MenuItemForm(menuItem_link) {
@@ -67,17 +69,7 @@ function MenuItemForm(menuItem_link) {
                 </div>
 
                 {/* Right side: MenuItems */}
-                <div className="menu-items-container w-30">
-                    {menuitems.map((item) => (
-                        <MenuItems
-                            key={item.id}
-                            name={item.name}
-                            price={item.price}
-                            description={item.description}
-                            image={item.image}
-                        />
-                    ))}
-                </div>
+             
                 <button type="submit" className="btn-submit">Submit</button>
 
             </form>:<></>}
@@ -85,7 +77,7 @@ function MenuItemForm(menuItem_link) {
         </div>
     </div>
     <div class="col">
-        <Menu/>
+        <MenuAdmin/>
     </div>
    
   </div>

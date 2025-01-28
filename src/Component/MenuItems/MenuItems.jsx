@@ -1,5 +1,4 @@
 
-
 function MenuItems({ name, price, description, image }) {
 
  
@@ -19,14 +18,9 @@ function MenuItems({ name, price, description, image }) {
             <small className="text-muted">{description}</small>
           </p>
           <a href="#" className="btn btn-primary btn-lg menu-btn">Browse Menu</a>
+          
 
-          {/* update button */}
-          <button className='btn btn-success'
-           >
-            Update</button>
-          {/* delete button */}
-          <button className='btn btn-danger'
-           >Delete</button>
+          
         </div>
       </div>
     </div>
