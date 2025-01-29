@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { findByOrderByNameAsc, findByOrderByNameDesc, findByOrderByPriceAsc, findByOrderByPriceDesc, getMenuItems } from '../Services/MenuItemsService';
 import MenuItems from './MenuItems';
+import { data } from 'react-router-dom';
 
 
 function Menu() {
@@ -8,7 +9,7 @@ function Menu() {
   let [searchQuery,setSearchQuery]=useState("");
  useEffect(() => {
      getMenuItems().then(data => {
-     console.log(data); 
+    console.log(data); 
        setMenuItems(data);
      })
    },[])
@@ -62,11 +63,9 @@ function Menu() {
         return (
           <>
           <MenuItems
-            key={menuItem.id}
             name={menuItem.name}
             price={menuItem.price}
             description={menuItem.description}
-            
             image={menuItem._links.self.href}
             menuItem_link={menuItem._links.self.href}
             

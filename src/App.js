@@ -4,7 +4,6 @@ import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import Navbar from './Component/User/Navbar';
 import UserRegister from './Component/User/UserRegister';
 import RestaurantRegister from './Component/Restaurant/RestaurantRegister';
-import MenuItemsRegister from './Component/MenuItems/MenuItemsRegister';
 import Main from './Component/Main';
 import MenuItems from './Component/MenuItems/MenuItems';
 import Menu from './Component/MenuItems/Menu';
@@ -28,10 +27,7 @@ const routes=createBrowserRouter([
   path:"/restaurantregister",
   element:<RestaurantRegister/>
 },
-{
-  path:"/menuItemsRegister",
-  element:<MenuItemsRegister/>
-},
+
 {
   path:"/main",
   element:<Main/>
@@ -51,6 +47,10 @@ const routes=createBrowserRouter([
 {
   path:"userlogin",
   element:<><UserLogin/></>
+},
+{
+  path:"menuItemForm",
+  element:<MenuItemForm/>
 }
 ])
 

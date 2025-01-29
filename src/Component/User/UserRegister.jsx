@@ -6,6 +6,7 @@ import { addUsers } from '../Services/UserService'
 function UserRegister() {
 
     const submitHandler=(e)=>{
+        e.preventDefault();
         addUsers({
             name:e.target.name.value,
             email:e.target.email.value,

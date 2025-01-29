@@ -59,6 +59,16 @@ export const getMenuItemsById=(menuItem_link)=>{
 
 }
 
+export const updateMenuItem=(menuItem_link,menuItem)=>{
+    return fetch(menuItem_link,{
+        method:"PUT",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify(menuItem)
+    }).then(data=>data.json().then(data=>data))
+
+}
+
+
 
 export const deleteMenuItems=(menuItem_link)=>{
     console.log(menuItem_link)
