@@ -11,6 +11,7 @@ function UserRegister() {
             name:e.target.name.value,
             email:e.target.email.value,
             password:e.target.password.value,
+            role:e.target.role.value,
             phoneNumber:e.target.phoneNumber.value,
             address:e.target.address.value
         }).then(data=>{
@@ -27,7 +28,7 @@ function UserRegister() {
                 </div>
                 <form   onSubmit={submitHandler}>
                     <div className="form-group">
-                        <label htmlFor="userName">Full Name</label>
+                        <label>Full Name</label>
                         <input
                             type="text"
                             id="name"
@@ -38,20 +39,20 @@ function UserRegister() {
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="userEmail">Email</label>
+                        <label>Email</label>
                         <input
                             type="email"
                             id="email"
                             name="email"
                             required
                             placeholder="Email"
-                            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                            // pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
                             title="Please enter a valid email address."
                         />
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="userPassword">Password</label>
+                        <label>Password</label>
                         <input
                             type="password"
                             id="password"
@@ -64,7 +65,19 @@ function UserRegister() {
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="userPhoneNumber">Phone Number</label>
+                        <label>Role</label>
+                        <input
+                            type="text"
+                            id="role"
+                            name="role"
+                            required
+                            placeholder="Role"
+                            minLength="4"
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label >Phone Number</label>
                         <input
                             type="tel"
                             id="phoneNumber"
@@ -76,7 +89,7 @@ function UserRegister() {
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="userAddress">Address</label>
+                        <label>Address</label>
                         <textarea
                             id="address"
                             name="address"
