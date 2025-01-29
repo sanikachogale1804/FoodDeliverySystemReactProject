@@ -11,7 +11,7 @@ function MenuItemAdmin({ name, price, description, image ,menu_link,OnSelectMenu
 
     onSelectDelete=async(menuItem_link)=>{
       const deletedMenuItems=await deleteMenuItems(menuItem_link)
-      onSelectDelete();
+      onDeleteMenuItem();
     }
  
     

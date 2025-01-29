@@ -17,7 +17,7 @@ function MenuAdmin() {
    },[])
 
    
-   const refreshProduct=()=>{
+   const refreshMenuItem=()=>{
     getMenuItems().then(data=>
       setMenuItems(data)
     )
@@ -51,7 +51,7 @@ function MenuAdmin() {
     <>
     <div className="">
 
-    <MenuItemForm selectedMenuItem={selectedMenuItem} onAddMenuItem={refreshProduct} setSelectedMenuItem={setSelectedMenuItem}/>
+    <MenuItemForm selectedMenuItem={selectedMenuItem} onAddMenuItem={refreshMenuItem} setSelectedMenuItem={setSelectedMenuItem}/>
 
     </div>
     <div className="container">
@@ -93,6 +93,7 @@ function MenuAdmin() {
 
             image={menuItem._links.self.href}
             OnSelectMenuItem={handleSelectMenuItem}
+            onDeleteMenuItem={refreshMenuItem}
           />
           
           </>

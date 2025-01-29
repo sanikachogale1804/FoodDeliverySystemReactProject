@@ -68,10 +68,8 @@ export const updateMenuItem=(menuItem_link,menuItem)=>{
 
 }
 
-
-
 export const deleteMenuItems=(menuItem_link)=>{
-    console.log(menuItem_link)
+    // console.log(menuItem_link)
     return fetch(menuItem_link,{method:"DELETE"})
     .then(data=>data.json())
     .then(data=>data)
