@@ -2,6 +2,7 @@ import React from 'react'
 
 import users from '../CSS/UserRegister.css'
 import { addUsers } from '../Services/UserService'
+import { toast, ToastContainer } from 'react-toastify';
 
 function UserRegister() {
 
@@ -16,6 +17,9 @@ function UserRegister() {
             address:e.target.address.value
         }).then(data=>{
            return data;
+        }).then(()=>{
+            toast.success("Registered Succesfully!");
+            e.target.reset();
         });
         
     }
@@ -108,6 +112,7 @@ function UserRegister() {
                     <p>Have an account? <a href="/login">Log in</a></p>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     )
 }
