@@ -17,3 +17,9 @@ export const setCategories=(menuItem_link,category_link)=>{
         },body:category_link})
 
 }
+
+export const getMenuItemsByCategory=(menuItem_link)=>{
+    console.log("Service Reached",menuItem_link);
+    return fetch(menuItem_link+"/menuItems").then(data=>data.json()).then(data=>data._embedded.menuItems)
+
+}

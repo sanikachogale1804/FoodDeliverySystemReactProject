@@ -3,37 +3,41 @@ import { findByOrderByNameAsc, findByOrderByNameDesc, findByOrderByPriceAsc, fin
 import MenuItems from './MenuItems';
 import MenuItemAdmin from './MenuItemAdmin';
 import MenuItemForm from './MenuItemForm';
+import { getCategory, setCategories } from '../Services/CategoryService';
 
 
 function MenuAdmin() {
   let [menuitems, setMenuItems] = useState([]);
-  let [searchQuery,setSearchQuery]=useState("");
-  let[selectedMenuItem,setSelectedMenuItem]=useState(null);
-  let[from,setFrom]=useState("")
-  let[to,setTo]=useState("")
- useEffect(() => {
-     getMenuItems().then(data => {
-     console.log(data); 
-       setMenuItems(data);
-     })
-   },[])
+  let [searchQuery, setSearchQuery] = useState("");
+  let [selectedMenuItem, setSelectedMenuItem] = useState(null);
+  let [from, setFrom] = useState("")
+  let [to, setTo] = useState("")
+  let [categories, setCategories] = useState([])
+  useEffect(() => {
+    getMenuItems().then(data => {
+      console.log(data);
+      setMenuItems(data);
 
-   
-   const refreshMenuItem=()=>{
-    getMenuItems().then(data=>
+    })
+    fetchCatgories();
+  }, [])
+
+
+  const refreshMenuItem = () => {
+    getMenuItems().then(data =>
       setMenuItems(data)
     )
-   }
+  }
 
-   const handleSelectMenuItem=(selectedMenuItem)=>{
+  const handleSelectMenuItem = (selectedMenuItem) => {
     setSelectedMenuItem(selectedMenuItem)
     console.log(selectedMenuItem)
-   }
+  }
 
 
 
-   //to sort data
-   const sort = async (choice) => {
+  //to sort data
+  const sort = async (choice) => {
 
     switch (choice) {
       case 1:
@@ -43,104 +47,137 @@ function MenuAdmin() {
         setMenuItems(await findByOrderByNameDesc());
         break;
       case 3:
-          setMenuItems(await findByOrderByPriceAsc());
-          break;
+        setMenuItems(await findByOrderByPriceAsc());
+        break;
       case 4:
-          setMenuItems(await findByOrderByPriceDesc());
-          break;
+        setMenuItems(await findByOrderByPriceDesc());
+        break;
     }
   }
 
- 
-
-  const handleFilterByPrice=async()=>{
-    if(from != '' && to != '')
-      setMenuItems(await getMenuItemsByRange(parseInt(from),parseInt(to)))
+  const fetchCatgories = async () => {
+    console.log("Hello")
+    setCategories(await getCategory())
   }
+
+
+
+  const handleFilterByPrice = async () => {
+    if (from != '' && to != '')
+      setMenuItems(await getMenuItemsByRange(parseInt(from), parseInt(to)))
+  }
+
+  //Category Start================================
+
+  const handleCategeory = (category_link, menuItem_link) => {
+    setCategories(menuItem_link + "/category", category_link)
+
+  }
+  // Category End===================================
 
   return (
     <>
-    <div className="">
+      <div className="">
 
-    <MenuItemForm selectedMenuItem={selectedMenuItem} onAddMenuItem={refreshMenuItem} setSelectedMenuItem={setSelectedMenuItem}/>
+        <MenuItemForm selectedMenuItem={selectedMenuItem} onAddMenuItem={refreshMenuItem} setSelectedMenuItem={setSelectedMenuItem} />
 
-    </div>
-    <div className="container">
-    {/* Sorting Section */}
-    <div className="sorting-container">
-      <ul className="list-group mb-3">
-        <li className="list-group-item" onClick={() => { sort(1) }}>A to Z</li>
-        <li className="list-group-item" onClick={() => { sort(2) }}>Z to A</li>
-        <li className="list-group-item" onClick={() => { sort(3) }}>Low to High</li>
-        <li className="list-group-item" onClick={() => { sort(4) }}>High to Low</li>
-      </ul>
-
-      <div className="search-container mb-3">
-        <input
-          type="text"
-          className="form-control"
-          id="search-input"
-          placeholder="Search here..."
-          onChange={(e) => { setSearchQuery(e.target.value) }}
-        />
       </div>
+      <div className="container">
+        {/* Sorting Section */}
+        <div className="sorting-container">
+          <ul className="list-group mb-3">
+            <li className="list-group-item" onClick={() => { sort(1) }}>A to Z</li>
+            <li className="list-group-item" onClick={() => { sort(2) }}>Z to A</li>
+            <li className="list-group-item" onClick={() => { sort(3) }}>Low to High</li>
+            <li className="list-group-item" onClick={() => { sort(4) }}>High to Low</li>
+          </ul>
 
-{/* Custom range start */}
+          <div className="search-container mb-3">
+            <input
+              type="text"
+              className="form-control"
+              id="search-input"
+              placeholder="Search here..."
+              onChange={(e) => { setSearchQuery(e.target.value) }}
+            />
+          </div>
 
-<div class="input-group mb-3">
-              <span class="input-group-text">From</span>
-              <span class="input-group-text">0.00</span>
-              <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)"
-                value={from} onChange={(e) => { setFrom(e.target.value) }} />
-            </div>
+          {/* Custom range start */}
 
-            <div class="input-group mb-3">
-              <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)"
-                value={to} onChange={(e) => { setTo(e.target.value) }} />
-              <span class="input-group-text">To</span>
-              <span class="input-group-text">0.00</span>
-            </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text">From</span>
+            <span class="input-group-text">0.00</span>
+            <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)"
+              value={from} onChange={(e) => { setFrom(e.target.value) }} />
+          </div>
 
-            {/* Filter by price range button */}
-            <button class="btn btn-primary mb-3" onClick={handleFilterByPrice}>Filter by Price</button>
-            <br />
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)"
+              value={to} onChange={(e) => { setTo(e.target.value) }} />
+            <span class="input-group-text">To</span>
+            <span class="input-group-text">0.00</span>
+          </div>
 
-            {/* Custom range end */}
+          {/* Filter by price range button */}
+          <button class="btn btn-primary mb-3" onClick={handleFilterByPrice}>Filter by Price</button>
+          <br />
 
-    </div>
+          {/* Custom range end */}
+
+          {/* Showing Category Start */}
+
+          <ol class="list-group list-group-numbered">
+
+            {
+              categories.map((c) => {
+                return (
+                  <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                      <div class="fw-bold">{c.categoryName}</div>
+                    </div>
+                    <span class="badge bg-primary rounded-pill">14</span>
+                  </li>
+                )
+              })
+            }
+          </ol>
+          {/* showing categories end======================== */}
+
+        </div>
 
 
- 
-    {/* Menu Items Section */}
-    <div className="menu-items-container">
 
 
-      {menuitems.filter((item) => {
-        return item.name.toLowerCase().includes(searchQuery.toLowerCase());
-      }).map(menuItem => {
-        return (
-          <>
-          <MenuItemAdmin
-            key={menuItem.id}
-            name={menuItem.name}
-            price={menuItem.price}
-            description={menuItem.description}
-            menu_link={menuItem._links.self.href}
+        {/* Menu Items Section */}
+        <div className="menu-items-container">
 
-            image={menuItem._links.self.href}
-            OnSelectMenuItem={handleSelectMenuItem}
-            onDeleteMenuItem={refreshMenuItem}
-          />
-          
-       
-          
-          </>
-        );
-      })}
 
-    </div>
-  </div>
-  </>
+          {menuitems.filter((item) => {
+            return item.name.toLowerCase().includes(searchQuery.toLowerCase());
+          }).map(menuItem => {
+            return (
+              <>
+                <MenuItemAdmin
+                  key={menuItem.id}
+                  name={menuItem.name}
+                  price={menuItem.price}
+                  description={menuItem.description}
+                  menu_link={menuItem._links.self.href}
+
+                  image={menuItem._links.self.href}
+                  OnSelectMenuItem={handleSelectMenuItem}
+                  onDeleteMenuItem={refreshMenuItem}
+                />
+
+
+
+              </>
+            );
+          })}
+
+        </div>
+      </div>
+    </>
   )
 }
 

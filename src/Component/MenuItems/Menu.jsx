@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { findByOrderByNameAsc, findByOrderByNameDesc, findByOrderByPriceAsc, findByOrderByPriceDesc, getMenuItems, getMenuItemsByRange } from '../Services/MenuItemsService';
 import MenuItems from './MenuItems';
 import { data } from 'react-router-dom';
-import { getCategory } from '../Services/CategoryService.jsx';
+import { getCategory, getMenuItemsByCategory } from '../Services/CategoryService.jsx';
 
-function Menu({menuItem_link}) {
+function Menu({ menuItem_link }) {
   let [menuitems, setMenuItems] = useState([]);
   let [searchQuery, setSearchQuery] = useState("");
   let [from, setFrom] = useState("")
@@ -16,7 +16,7 @@ function Menu({menuItem_link}) {
     setCategories(await getCategory())
   }
 
- 
+
   useEffect(() => {
     getMenuItems().then(data => {
       console.log(data);
@@ -25,6 +25,7 @@ function Menu({menuItem_link}) {
 
     fetchCatgories();
   }, [])
+
 
   //to sort data
   const sort = async (choice) => {
@@ -56,14 +57,20 @@ function Menu({menuItem_link}) {
   const handleCategeory = (category_link, menuItem_link) => {
     setCategories(menuItem_link + "/category", category_link)
 
+    
   }
   // Category End
 
+  const showMenuItemsBasedOnCategory=async (menuItem_link)=>{
+    console.log("clicked",menuItem_link)
+    setMenuItems(await getMenuItemsByCategory(menuItem_link))
+
+  }
   return (
     <div className="container">
 
 
-      
+
       {/* Sorting Section */}
       <div className="sorting-container">
         <ul className="list-group mb-3">
@@ -106,19 +113,28 @@ function Menu({menuItem_link}) {
         </div>
 
         {/* Showing Category Start */}
-      <div class="dropdown mb-3">
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+
+        <ol class="list-group list-group-numbered">
+
           {
-            categories.map((category) => {
-              return (<li><button class="dropdown-item" type="button"
-              >{category.categoryName}</button></li>)
+            categories.map((c) => {
+              return (
+                <li class="list-group-item d-flex justify-content-between align-items-start" onClick={()=>{
+                  showMenuItemsBasedOnCategory(c._links.self.href)
+                }}>   
+                  <div class="ms-2 me-auto">
+                  
+                    <div class="fw-bold" >{c.categoryName}</div>
+                    
+                  </div>
+                  <span class="badge bg-primary rounded-pill">14</span>
+                </li>
+              )
             })
           }
 
-        </ul>
-      </div>
-
-      {/* Showing Category End */}
+        </ol>
+        {/* showing categories end======================== */}
       </div>
 
 
