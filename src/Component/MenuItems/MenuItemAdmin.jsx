@@ -13,6 +13,8 @@ function MenuItemAdmin({ name, price, description, image ,menu_link,OnSelectMenu
       const deletedMenuItems=await deleteMenuItems(menuItem_link)
       onDeleteMenuItem();
     }
+
+    
  
     
     return (

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { findByOrderByNameAsc, findByOrderByNameDesc, findByOrderByPriceAsc, findByOrderByPriceDesc, getMenuItems } from '../Services/MenuItemsService';
+import { findByOrderByNameAsc, findByOrderByNameDesc, findByOrderByPriceAsc, findByOrderByPriceDesc, getMenuItems, getMenuItemsByRange } from '../Services/MenuItemsService';
 import MenuItems from './MenuItems';
 import MenuItemAdmin from './MenuItemAdmin';
 import MenuItemForm from './MenuItemForm';
@@ -9,6 +9,8 @@ function MenuAdmin() {
   let [menuitems, setMenuItems] = useState([]);
   let [searchQuery,setSearchQuery]=useState("");
   let[selectedMenuItem,setSelectedMenuItem]=useState(null);
+  let[from,setFrom]=useState("")
+  let[to,setTo]=useState("")
  useEffect(() => {
      getMenuItems().then(data => {
      console.log(data); 
@@ -28,6 +30,8 @@ function MenuAdmin() {
     console.log(selectedMenuItem)
    }
 
+
+
    //to sort data
    const sort = async (choice) => {
 
@@ -45,6 +49,13 @@ function MenuAdmin() {
           setMenuItems(await findByOrderByPriceDesc());
           break;
     }
+  }
+
+ 
+
+  const handleFilterByPrice=async()=>{
+    if(from != '' && to != '')
+      setMenuItems(await getMenuItemsByRange(parseInt(from),parseInt(to)))
   }
 
   return (
@@ -73,8 +84,33 @@ function MenuAdmin() {
           onChange={(e) => { setSearchQuery(e.target.value) }}
         />
       </div>
+
+{/* Custom range start */}
+
+<div class="input-group mb-3">
+              <span class="input-group-text">From</span>
+              <span class="input-group-text">0.00</span>
+              <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)"
+                value={from} onChange={(e) => { setFrom(e.target.value) }} />
+            </div>
+
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)"
+                value={to} onChange={(e) => { setTo(e.target.value) }} />
+              <span class="input-group-text">To</span>
+              <span class="input-group-text">0.00</span>
+            </div>
+
+            {/* Filter by price range button */}
+            <button class="btn btn-primary mb-3" onClick={handleFilterByPrice}>Filter by Price</button>
+            <br />
+
+            {/* Custom range end */}
+
     </div>
 
+
+ 
     {/* Menu Items Section */}
     <div className="menu-items-container">
 
@@ -95,6 +131,8 @@ function MenuAdmin() {
             OnSelectMenuItem={handleSelectMenuItem}
             onDeleteMenuItem={refreshMenuItem}
           />
+          
+       
           
           </>
         );

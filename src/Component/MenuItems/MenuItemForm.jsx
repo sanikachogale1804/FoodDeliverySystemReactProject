@@ -13,6 +13,7 @@ function MenuItemForm({ selectedMenuItem, setSelectedMenuItem, onAddMenuItem }) 
     const [Item, setItem] = useState(null);
     let [menuitems, setMenuItems] = useState([]);
     let [showForm, setShowForm] = useState(true);
+    
 
     let [menuItem, setMenuItem] = useState({ id: "", name: "", price: "", description: "" })
 
@@ -60,6 +61,11 @@ function MenuItemForm({ selectedMenuItem, setSelectedMenuItem, onAddMenuItem }) 
 
     }
 
+const refreshMenuItem=()=>{
+    getMenuItems().then(data=>{
+        setMenuItems(data)
+    })
+}
 
     return (
         <div>
@@ -68,11 +74,7 @@ function MenuItemForm({ selectedMenuItem, setSelectedMenuItem, onAddMenuItem }) 
             {showForm ? <form onSubmit={selectedMenuItem ? updateHandler : submitHandler} className='w-3 border border-dark p-4'>
                 <h2>Add Menu Items</h2>
 
-                {selectedMenuItem ? <></> : <><div className="form-group">
-                    <label>Item Id</label>
-                    <input type="number" id="itemId" className="form-control" placeholder="Enter Item ID"
-                        value={menuItem.id} />
-                </div></>}
+              
 
                 <div className="form-group">
                     <label>Item Name</label>

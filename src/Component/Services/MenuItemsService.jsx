@@ -74,3 +74,17 @@ export const deleteMenuItems=(menuItem_link)=>{
     .then(data=>data.json())
     .then(data=>data)
 }
+
+// export const getProductsByRange=(startPrice,endPrice)=>{
+//     return fetch(${API_LINK}/search/findByProductpriceBetween?startPrice=${startPrice}&endPrice=${endPrice})
+//             .then(data=>data.json())
+//             .then(data=>data["_embedded"]["products"])
+// }
+
+export const getMenuItemsByRange=(startPrice,endPrice)=>{
+    return fetch(`${API_Link}/search/findByPriceBetween?startPrice=${startPrice}&endPrice=${endPrice}`) 
+    .then(data=>data.json())
+    .then(data=>data["_embedded"]["menuItems"])
+
+}
+
