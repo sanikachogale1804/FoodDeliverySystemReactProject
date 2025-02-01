@@ -156,6 +156,7 @@ function MenuAdmin({menuItem_link}) {
               <>
                 <MenuItemAdmin
                   key={menuItem.id}
+                  id={menuItem.id}
                   name={menuItem.name}
                   price={menuItem.price}
                   description={menuItem.description}

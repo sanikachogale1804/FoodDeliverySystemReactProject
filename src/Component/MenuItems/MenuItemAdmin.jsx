@@ -1,7 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import { deleteMenuItems, getMenuItemsById } from "../Services/MenuItemsService";
 
-function MenuItemAdmin({ name, price, description, image ,menu_link,OnSelectMenuItem,onSelectDelete,onDeleteMenuItem}) {
+function MenuItemAdmin({ id,name, price, description, image ,menu_link,OnSelectMenuItem,onSelectDelete,onDeleteMenuItem}) {
 
+
+  const navigate=useNavigate();
     const onSelectUpdate=async (link)=>{
       //console.log(link);
       let menuItem =await getMenuItemsById(link);
@@ -30,7 +33,7 @@ function MenuItemAdmin({ name, price, description, image ,menu_link,OnSelectMenu
             <p className="card-text menu-description">
               <small className="text-muted">{description}</small>
             </p>
-            <a href="#" className="btn btn-primary btn-lg menu-btn">View Details</a>
+            <a href="#" className="btn btn-primary btn-lg menu-btn" onClick={()=>{navigate(`/menu/${id}`)}}>View Details</a>
             <a href="#" className="btn btn-primary btn-lg menu-btn1" onClick={()=>{onSelectUpdate(menu_link) }}>Update</a>
             <a href="#" className="btn btn-primary btn-lg menu-btn2" onClick={()=>{onSelectDelete(menu_link)}}>Delete</a>
             
