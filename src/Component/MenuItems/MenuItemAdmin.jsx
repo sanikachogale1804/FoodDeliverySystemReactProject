@@ -14,9 +14,6 @@ function MenuItemAdmin({ name, price, description, image ,menu_link,OnSelectMenu
       onDeleteMenuItem();
     }
 
-    
- 
-    
     return (
   
       <div className="Item-container col-md-6 mb-4">
@@ -33,12 +30,11 @@ function MenuItemAdmin({ name, price, description, image ,menu_link,OnSelectMenu
             <p className="card-text menu-description">
               <small className="text-muted">{description}</small>
             </p>
-            <a href="#" className="btn btn-primary btn-lg menu-btn">Browse Menu</a>
-            <a href="#" className="btn btn-primary btn-lg menu-btn" onClick={()=>{onSelectUpdate(menu_link) }}>Update</a>
-            <a href="#" className="btn btn-primary btn-lg menu-btn" onClick={()=>{onSelectDelete(menu_link)}}>Delete</a>
+            <a href="#" className="btn btn-primary btn-lg menu-btn">View Details</a>
+            <a href="#" className="btn btn-primary btn-lg menu-btn1" onClick={()=>{onSelectUpdate(menu_link) }}>Update</a>
+            <a href="#" className="btn btn-primary btn-lg menu-btn2" onClick={()=>{onSelectDelete(menu_link)}}>Delete</a>
             
-  
-            
+
           </div>
         </div>
       </div>

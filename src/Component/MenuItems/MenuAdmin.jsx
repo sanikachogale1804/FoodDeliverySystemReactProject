@@ -3,10 +3,10 @@ import { findByOrderByNameAsc, findByOrderByNameDesc, findByOrderByPriceAsc, fin
 import MenuItems from './MenuItems';
 import MenuItemAdmin from './MenuItemAdmin';
 import MenuItemForm from './MenuItemForm';
-import { getCategory, setCategories } from '../Services/CategoryService';
+import { getCategory, getMenuItemsByCategory, setCategories } from '../Services/CategoryService';
 
 
-function MenuAdmin() {
+function MenuAdmin({menuItem_link}) {
   let [menuitems, setMenuItems] = useState([]);
   let [searchQuery, setSearchQuery] = useState("");
   let [selectedMenuItem, setSelectedMenuItem] = useState(null);
@@ -54,23 +54,23 @@ function MenuAdmin() {
         break;
     }
   }
+  
+  const handleFilterByPrice = async () => {
+    if (from != '' && to != '')
+      setMenuItems(await getMenuItemsByRange(parseInt(from), parseInt(to)))
+  }
 
   const fetchCatgories = async () => {
     console.log("Hello")
     setCategories(await getCategory())
   }
 
-
-
-  const handleFilterByPrice = async () => {
-    if (from != '' && to != '')
-      setMenuItems(await getMenuItemsByRange(parseInt(from), parseInt(to)))
-  }
-
   //Category Start================================
 
-  const handleCategeory = (category_link, menuItem_link) => {
-    setCategories(menuItem_link + "/category", category_link)
+  const handleCategeory = async(category_link) => {
+
+   let data=await getMenuItemsByCategory(category_link)
+   setMenuItems(data)
 
   }
   // Category End===================================
@@ -131,9 +131,10 @@ function MenuAdmin() {
             {
               categories.map((c) => {
                 return (
-                  <li class="list-group-item d-flex justify-content-between align-items-start">
-                    <div class="ms-2 me-auto">
-                      <div class="fw-bold">{c.categoryName}</div>
+                  <li class="list-group-item d-flex justify-content-between align-items-start" onClick={()=>{handleCategeory(c._links.self.href)}}>
+                    <div class="ms-2 me-auto" >
+                      <div class="fw-bold" >{c.categoryName}</div>
+                      
                     </div>
                     <span class="badge bg-primary rounded-pill">14</span>
                   </li>
@@ -142,11 +143,7 @@ function MenuAdmin() {
             }
           </ol>
           {/* showing categories end======================== */}
-
         </div>
-
-
-
 
         {/* Menu Items Section */}
         <div className="menu-items-container">
@@ -163,14 +160,10 @@ function MenuAdmin() {
                   price={menuItem.price}
                   description={menuItem.description}
                   menu_link={menuItem._links.self.href}
-
                   image={menuItem._links.self.href}
                   OnSelectMenuItem={handleSelectMenuItem}
                   onDeleteMenuItem={refreshMenuItem}
                 />
-
-
-
               </>
             );
           })}

@@ -6,22 +6,22 @@ import { toast, ToastContainer } from 'react-toastify';
 
 function UserRegister() {
 
-    const submitHandler=(e)=>{
+    const submitHandler = (e) => {
         e.preventDefault();
         addUsers({
-            name:e.target.name.value,
-            email:e.target.email.value,
-            password:e.target.password.value,
-            role:e.target.role.value,
-            phoneNumber:e.target.phoneNumber.value,
-            address:e.target.address.value
-        }).then(data=>{
-           return data;
-        }).then(()=>{
+            name: e.target.name.value,
+            email: e.target.email.value,
+            password: e.target.password.value,
+            role: e.target.role.value,
+            phoneNumber: e.target.phoneNumber.value,
+            address: e.target.address.value
+        }).then(data => {
+            return data;
+        }).then(() => {
             toast.success("Registered Succesfully!");
             e.target.reset();
         });
-        
+
     }
     return (
         <div className="register-container">
@@ -30,7 +30,7 @@ function UserRegister() {
                     <h2>Registration</h2>
                     <p>Create a new account</p>
                 </div>
-                <form   onSubmit={submitHandler}>
+                <form onSubmit={submitHandler}>
                     <div className="form-group">
                         <label>Full Name</label>
                         <input

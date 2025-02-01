@@ -11,6 +11,7 @@ import MenuItemForm from './Component/MenuItems/MenuItemForm';
 import UserLogin from './Component/User/UserLogin';
 import MenuItemAdmin from './Component/MenuItems/MenuItemAdmin';
 import MenuAdmin from './Component/MenuItems/MenuAdmin';
+import AboutUs from './Component/User/AboutUs';
 
 
 
@@ -51,6 +52,10 @@ const routes=createBrowserRouter([
 {
   path:"menuItemForm",
   element:<MenuItemForm/>
+},
+{
+  path:"aboutus",
+  element:<AboutUs/>
 }
 ])
 

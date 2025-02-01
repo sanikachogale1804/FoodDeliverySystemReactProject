@@ -8,7 +8,6 @@ export const getCategory=()=>{
     .then(data=>data["_embedded"]["categories"])
 }
 
-
 export const setCategories=(menuItem_link,category_link)=>{
    return fetch(menuItem_link,
     {

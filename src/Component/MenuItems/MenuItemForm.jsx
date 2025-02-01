@@ -52,7 +52,8 @@ function MenuItemForm({ selectedMenuItem, setSelectedMenuItem, onAddMenuItem }) 
             // id:e.target.id.value,
             name: e.target.name.value,
             price: e.target.price.value,
-            description: e.target.description.value
+            description: e.target.description.value,
+            menuItemsImage:selectedMenuItem.menuItemsImage
         }).then(data => {
             onAddMenuItem();
             setMenuItem({ id: "", name: "", price: "", description: "" });
@@ -73,8 +74,6 @@ const refreshMenuItem=()=>{
             <button className='btn btn-primary mb-3' onClick={() => { setShowForm((prev) => !prev) }}>Add Menu</button>
             {showForm ? <form onSubmit={selectedMenuItem ? updateHandler : submitHandler} className='w-3 border border-dark p-4'>
                 <h2>Add Menu Items</h2>
-
-              
 
                 <div className="form-group">
                     <label>Item Name</label>

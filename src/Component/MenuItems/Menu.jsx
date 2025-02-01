@@ -4,12 +4,13 @@ import MenuItems from './MenuItems';
 import { data } from 'react-router-dom';
 import { getCategory, getMenuItemsByCategory } from '../Services/CategoryService.jsx';
 
-function Menu({ menuItem_link }) {
+function Menu({ menuItem_link,category_link }) {
   let [menuitems, setMenuItems] = useState([]);
   let [searchQuery, setSearchQuery] = useState("");
   let [from, setFrom] = useState("")
   let [to, setTo] = useState("")
   let [categories, setCategories] = useState([])
+  let [categoryItemCount,setCategoryItemCount]=useState({})
 
   const fetchCatgories = async () => {
     console.log("Hello")
@@ -57,19 +58,18 @@ function Menu({ menuItem_link }) {
   const handleCategeory = (category_link, menuItem_link) => {
     setCategories(menuItem_link + "/category", category_link)
 
-    
+
   }
   // Category End
 
-  const showMenuItemsBasedOnCategory=async (menuItem_link)=>{
-    console.log("clicked",menuItem_link)
+  const showMenuItemsBasedOnCategory = async (menuItem_link) => {
+    console.log("clicked", menuItem_link)
     setMenuItems(await getMenuItemsByCategory(menuItem_link))
 
+    setCategoryItemCount();
   }
   return (
     <div className="container">
-
-
 
       {/* Sorting Section */}
       <div className="sorting-container">
@@ -119,24 +119,22 @@ function Menu({ menuItem_link }) {
           {
             categories.map((c) => {
               return (
-                <li class="list-group-item d-flex justify-content-between align-items-start" onClick={()=>{
+                <li class="list-group-item d-flex justify-content-between align-items-start" onClick={() => {
                   showMenuItemsBasedOnCategory(c._links.self.href)
-                }}>   
+                }}>
                   <div class="ms-2 me-auto">
-                  
+
                     <div class="fw-bold" >{c.categoryName}</div>
-                    
+
                   </div>
                   <span class="badge bg-primary rounded-pill">14</span>
                 </li>
               )
             })
           }
-
         </ol>
         {/* showing categories end======================== */}
       </div>
-
 
       {/* Menu Items Section */}
       <div className="menu-items-container">
@@ -151,9 +149,7 @@ function Menu({ menuItem_link }) {
                 description={menuItem.description}
                 image={menuItem._links.self.href}
                 menuItem_link={menuItem._links.self.href}
-
               />
-
             </>
           );
         })}

@@ -17,7 +17,7 @@ function MenuItems({ name, price, description, image }) {
           <p className="card-text menu-description">
             <small className="text-muted">{description}</small>
           </p>
-          <a href="#" className="btn btn-primary btn-lg menu-btn">Browse Menu</a>
+          <a href="#" className="btn btn-primary btn-lg menu-btn">View Details</a>
           
 
           
