@@ -144,6 +144,7 @@ function Menu({ menuItem_link,category_link }) {
           return (
             <>
               <MenuItems
+              id={menuItem.id}
                 name={menuItem.name}
                 price={menuItem.price}
                 description={menuItem.description}

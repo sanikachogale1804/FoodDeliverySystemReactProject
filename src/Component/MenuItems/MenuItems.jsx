@@ -18,7 +18,7 @@ const navigate=useNavigate()
           <p className="card-text menu-description">
             <small className="text-muted">{description}</small>
           </p>
-          <button href="#" className="btn btn-primary btn-lg menu-btn" >View Details</button>
+          <button href="#" className="btn btn-primary btn-lg menu-btn" onClick={()=>{navigate(`/menu/${id}`)}}>View Details</button>
           
 
           

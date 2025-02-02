@@ -2,46 +2,57 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMenuItemsById } from '../Services/MenuItemsService';
 
+import  c from '../CSS/MenuItemsDetails.css'
+
 function MenuItemDetails() {
-  const [menuItem, setMenuItem] = useState(null);  // Set initial state to null, not undefined
+  const [menuItem, setMenuItem] = useState(null);
   const { id } = useParams();
 
   const fetchMenuItem = async () => {
     try {
       const data = await getMenuItemsById(`http://localhost:8080/menuItems/${id}`);
-      setMenuItem(data);  // Update the state with the fetched data
+      setMenuItem(data);
     } catch (error) {
       console.error("Error fetching menu item:", error);
     }
   };
 
   useEffect(() => {
-    fetchMenuItem();  // Call the fetch function on component mount
-  }, [id]);  // Dependency on `id` to re-fetch if the `id` changes
+    fetchMenuItem();
+  }, [id]);
 
-  if (!menuItem) {  // Show loading message or a placeholder while data is being fetched
+  if (!menuItem) {
     return <div>Loading...</div>;
   }
 
-  // Render the menu item details after data is fetched
   return (
-    <div className="Item-container col-md-6 mb-4">
-      <div className="card menu-card">
-        <img
-          src={`http://localhost:8080/menuItems/${id}/image`} // Assuming `menuItem` contains `image` property
-          className="card-img-top menu-img"
-          alt={`Food item: ${menuItem.name}`}
-        />
-        <div className="card-body">
-          <h5 className="card-title menu-name">{menuItem.name}</h5>
-          <p className="card-text menu-price">{menuItem.price}</p>
-          <p className="card-text menu-description">
+    <div className="menu-item-container">
+      <div className="menu-item-card">
+        <div className="menu-item-img-container">
+          <img
+            src={`http://localhost:8080/menuItems/${id}/image`}
+            className="menu-item-img"
+            alt={`Food item: ${menuItem.name}`}
+          />
+        </div>
+        <div className="menu-item-details">
+          <h5 className="menu-item-title">{menuItem.name}</h5>
+          <p className="menu-item-price">{menuItem.price}</p>
+          <p className="menu-item-description">
             <small className="text-muted">{menuItem.description}</small>
           </p>
-          <a href="#" className="btn btn-primary btn-lg menu-btn">View Details</a>
+          <div className="offers">
+            <p><strong>Special Offer:</strong> 20% off on your first order!</p>
+            <p><strong>Limited time offer!</strong></p>
+          </div>
+          <button className="order-now-btn btn btn-success btn-lg">
+            Order Now
+          </button>
         </div>
       </div>
     </div>
+
+   
   );
 }
 
