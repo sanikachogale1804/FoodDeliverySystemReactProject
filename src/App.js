@@ -13,6 +13,8 @@ import MenuItemAdmin from './Component/MenuItems/MenuItemAdmin';
 import MenuAdmin from './Component/MenuItems/MenuAdmin';
 import AboutUs from './Component/User/AboutUs';
 import MenuItemDetails from './Component/MenuItems/MenuItemDetails';
+import Resturant from './Component/Restaurant/Resturant';
+
 
 
 
@@ -61,6 +63,10 @@ const routes=createBrowserRouter([
 {
   path:"menu/:id",
   element:<><Navbar/><MenuItemDetails/></>
+},
+{
+  path:"restaurant",
+  element:<><Resturant/></>
 }
 ])
 

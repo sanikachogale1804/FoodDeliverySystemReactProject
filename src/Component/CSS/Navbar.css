@@ -7,13 +7,13 @@
   
   /* !important :Appear white by default.  */
   .navbar a {
+    margin-left: 3px;
     color: white !important;
   }
   
   .navbar a:hover {
     color: #f8a488 !important;
   }
-  
   
   .navbar .btn {
     border-radius: 20px; 

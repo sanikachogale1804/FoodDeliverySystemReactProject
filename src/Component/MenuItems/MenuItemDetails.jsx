@@ -45,7 +45,7 @@ function MenuItemDetails() {
             <p><strong>Special Offer:</strong> 20% off on your first order!</p>
             <p><strong>Limited time offer!</strong></p>
           </div>
-          <button className="order-now-btn btn btn-success btn-lg">
+          <button className="order-now-btn btn btn-success btn-lg" >
             Order Now
           </button>
         </div>

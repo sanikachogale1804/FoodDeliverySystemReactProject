@@ -20,8 +20,6 @@ const navigate=useNavigate()
           </p>
           <button href="#" className="btn btn-primary btn-lg menu-btn" onClick={()=>{navigate(`/menu/${id}`)}}>View Details</button>
           
-
-          
         </div>
       </div>
     </div>
