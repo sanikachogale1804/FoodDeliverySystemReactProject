@@ -1,0 +1,56 @@
+/* Container for all restaurant items */
+.restaurant-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Creates 3 equal-width columns */
+    gap: 20px; /* Space between each card */
+    padding: 20px; /* Padding around the grid */
+  }
+  
+  /* Style for individual restaurant card */
+  /* .restaurant-container {
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
+    overflow: hidden; 
+    background-color: #fff; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  } */
+  
+  .restaurant-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+  
+  .card-body {
+    padding: 15px;
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .card-text {
+    margin-bottom: 10px;
+  }
+  
+  /* Buttons */
+  .menu-btn {
+    margin-top: 10px;
+  }
+  
+  /* Responsive layout for smaller screens */
+  @media (max-width: 768px) {
+    .restaurant-list {
+      grid-template-columns: repeat(2, 1fr); /* 2 items per row on smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .restaurant-list {
+      grid-template-columns: 1fr; /* 1 item per row on mobile */
+    }
+  }
+  

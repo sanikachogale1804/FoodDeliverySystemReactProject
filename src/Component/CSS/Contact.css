@@ -1,0 +1,96 @@
+/* General Styles */
+.contact-page-container {
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: auto;
+    font-family: 'Arial', sans-serif;
+    background-color: #fff;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header */
+.contact-page-container h2 {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+/* Contact Information Section */
+.contact-info {
+    margin-bottom: 40px;
+}
+
+.contact-info p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.contact-info strong {
+    color: #333;
+    font-weight: bold;
+}
+
+/* Business Hours Section */
+.business-hours {
+    margin-bottom: 40px;
+}
+
+.business-hours h3 {
+    font-size: 24px;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.business-hours p {
+    font-size: 18px;
+    color: #555;
+}
+
+/* Social Media Section */
+.social-media {
+    margin-bottom: 40px;
+}
+
+.social-media h3 {
+    font-size: 24px;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.social-media p {
+    font-size: 18px;
+    color: #555;
+}
+
+.social-media a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.social-media a:hover {
+    color: #2980b9;
+}
+
+/* Add some spacing and centering */
+.contact-page-container p,
+.contact-page-container h3 {
+    margin-left: 20px;
+}
+
+/* Add responsiveness for smaller screens */
+@media (max-width: 768px) {
+    .contact-page-container {
+        padding: 30px 15px;
+    }
+
+    .contact-info p,
+    .business-hours p,
+    .social-media p {
+        font-size: 16px;
+    }
+}

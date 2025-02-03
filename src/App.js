@@ -14,8 +14,8 @@ import MenuAdmin from './Component/MenuItems/MenuAdmin';
 import AboutUs from './Component/User/AboutUs';
 import MenuItemDetails from './Component/MenuItems/MenuItemDetails';
 import Resturant from './Component/Restaurant/Resturant';
-
-
+import Contact from './Component/User/Contact';
+import ResturantItemDetails from './Component/Restaurant/ResturantItemDetails';
 
 
 const routes=createBrowserRouter([
@@ -65,8 +65,17 @@ const routes=createBrowserRouter([
   element:<><Navbar/><MenuItemDetails/></>
 },
 {
+  path:"resturant/:id",
+  element:<><Navbar/><ResturantItemDetails/></>
+},
+{
   path:"restaurant",
-  element:<><Resturant/></>
+  element:<><Navbar/><Resturant/></>
+},
+{
+  path:"/contact",
+  element:<><Navbar/><Contact/></>
+
 }
 ])
 

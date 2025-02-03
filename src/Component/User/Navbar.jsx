@@ -33,13 +33,20 @@ function Navbar() {
                             </li>
 
                             <li class="nav-item">
-                                <Link class="nav-link active" href="#">Contact</Link>
+                                <Link class="nav-link active" to={"/contact"}>Contact</Link>
                             </li>
 
                             <li class="nav-item">
                                 <Link class="nav-link active" to={"/restaurant"}>Restaurant</Link>
                             </li>
 
+                            <li class="nav-item">
+                                <Link class="nav-link active" to={"/menu-admin"}>Menu-Admin</Link>
+                            </li>
+
+                            <li class="nav-item">
+                                <Link class="nav-link active" to={"/UserRegister"}>UserRegister</Link>
+                            </li>
                         </ul>
                         <form class="d-flex">
                             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />

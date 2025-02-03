@@ -3,7 +3,7 @@ import { getRestaurants } from './RestaurantService';
 import { data } from 'react-router-dom';
 import RestuarantItem from './RestuarantItem';
 
-function Resturant({name,address}) {
+function Resturant({id,name,address}) {
   let[restaurants,setRestaurants]=useState([]);
  
   useEffect(()=>{
@@ -14,12 +14,13 @@ function Resturant({name,address}) {
   },[])
 
   return (
-    <div className="resturant-items-container">
+    <div className="restaurant-list">
         {
           restaurants.map((r)=>{
             return (
               <>
                <RestuarantItem
+               id={r.id}
                name={r.name}
                address={r.address}
                phoneNumber={r.phoneNumber}

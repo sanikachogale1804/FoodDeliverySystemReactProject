@@ -82,3 +82,9 @@ export const getMenuItemsByRange=(startPrice,endPrice)=>{
 
 }
 
+export const getMenuItemsByRestuarant=(menuitem_link)=>{
+    return fetch(menuitem_link)
+    .then(data=>data.json())
+    .then(data=>data["_embedded"]["menuItems"])
+}
+

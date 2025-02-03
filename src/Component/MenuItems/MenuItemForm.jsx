@@ -1,114 +1,171 @@
-import React, { useEffect, useState } from 'react'
-import { addMenuItem, getMenuItems, updateMenuItem, uploadProductImage } from '../Services/MenuItemsService'
+import React, { useEffect, useState } from 'react';
+import { addMenuItem, updateMenuItem, uploadProductImage } from '../Services/MenuItemsService';
+import { toast, ToastContainer } from 'react-toastify'; // Correctly importing toast and ToastContainer
+import 'react-toastify/dist/ReactToastify.css'; // Import Toastify CSS
 
-import menu from '../CSS/MenuItems.css'
-import MenuItems from './MenuItems';
-import Menu from './Menu';
-import MenuItemAdmin from './MenuItemAdmin';
-import MenuAdmin from './MenuAdmin';
-import { data } from 'react-router-dom';
-
+import menu from '../CSS/MenuItems.css';
 
 function MenuItemForm({ selectedMenuItem, setSelectedMenuItem, onAddMenuItem }) {
-    const [Item, setItem] = useState(null);
-    let [menuitems, setMenuItems] = useState([]);
-    let [showForm, setShowForm] = useState(true);
-    
-
-    let [menuItem, setMenuItem] = useState({ id: "", name: "", price: "", description: "" })
+    const [menuItem, setMenuItem] = useState({ id: "", name: "", price: "", description: "", menuItemsImage: null });
+    const [showForm, setShowForm] = useState(true);
 
     const submitHandler = (e) => {
         e.preventDefault();
+
+        // Simple validation inside the form
+        if (!menuItem.name || !menuItem.price || !menuItem.description || !menuItem.menuItemsImage) {
+            alert("Please fill out all fields, including the product image.");
+            return;
+        }
+
+        if (isNaN(menuItem.price) || menuItem.price <= 0) {
+            alert("Please enter a valid price.");
+            return;
+        }
+
+        // Proceed with form submission if validation passes
         addMenuItem({
-            name: e.target.name.value,
-            price: e.target.price.value,
-            description: e.target.description.value
+            name: menuItem.name,
+            price: menuItem.price,
+            description: menuItem.description,
         }).then((data) => {
-            uploadProductImage(data._links.self.href, e.target.menuItemsImage.files[0])
-            setItem(data)
-        })
-    }
-
-    useEffect(() => {
-        if (selectedMenuItem)
-            setMenuItem(selectedMenuItem)
-    }, [selectedMenuItem])
-
-
-    const handleChange = (e) => {
-        console.log(e.target);
-        let { name, value } = e.target;
-        console.log(name + " " + value);
-        setMenuItem((prevMenuItem) => {
-            console.log(menuItem)
-            return { ...prevMenuItem, [name]: value }
-
-        })
-    }
+            if (menuItem.menuItemsImage) {
+                uploadProductImage(data._links.self.href, menuItem.menuItemsImage);
+            }
+            onAddMenuItem();
+            setMenuItem({ id: "", name: "", price: "", description: "", menuItemsImage: null });
+            
+            // Show success toast notification
+            toast.success("Menu item added successfully!", {
+                position: toast.POSITION.TOP_RIGHT, // Correct position usage
+                autoClose: 3000, // Toast will close after 3 seconds
+            });
+        });
+    };
 
     const updateHandler = (e) => {
         e.preventDefault();
+
+        // Simple validation inside the form for update
+        if (!menuItem.name || !menuItem.price || !menuItem.description) {
+            alert("Please fill out all fields.");
+            return;
+        }
+
+        if (isNaN(menuItem.price) || menuItem.price <= 0) {
+            alert("Please enter a valid price.");
+            return;
+        }
+
+        // Proceed with updating the menu item if validation passes
         updateMenuItem(selectedMenuItem._links.self.href, {
-            // id:e.target.id.value,
-            name: e.target.name.value,
-            price: e.target.price.value,
-            description: e.target.description.value,
-            menuItemsImage:selectedMenuItem.menuItemsImage
+            name: menuItem.name,
+            price: menuItem.price,
+            description: menuItem.description,
+            menuItemsImage: selectedMenuItem.menuItemsImage
         }).then(data => {
+            uploadProductImage(data._links.self.href, menuItem.menuItemsImage);
             onAddMenuItem();
-            setMenuItem({ id: "", name: "", price: "", description: "" });
+            setMenuItem({ id: "", name: "", price: "", description: "", menuItemsImage: null });
             setSelectedMenuItem(null);
-        })
 
-    }
+            // Show success toast notification after update
+            toast.success("Menu item updated successfully!", {
+                autoClose: 3000, // Toast will close after 3 seconds
+            });
+        });
+    };
 
-const refreshMenuItem=()=>{
-    getMenuItems().then(data=>{
-        setMenuItems(data)
-    })
-}
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setMenuItem(prevMenuItem => ({
+            ...prevMenuItem,
+            [name]: value
+        }));
+    };
+
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        setMenuItem(prevMenuItem => ({
+            ...prevMenuItem,
+            menuItemsImage: file
+        }));
+    };
+
+    useEffect(() => {
+        if (selectedMenuItem) {
+            setMenuItem(selectedMenuItem);
+        }
+    }, [selectedMenuItem]);
 
     return (
         <div>
+            <button className='btn btn-primary mb-3' onClick={() => setShowForm(prev => !prev)}>Add Menu</button>
 
-            <button className='btn btn-primary mb-3' onClick={() => { setShowForm((prev) => !prev) }}>Add Menu</button>
-            {showForm ? <form onSubmit={selectedMenuItem ? updateHandler : submitHandler} className='w-3 border border-dark p-4'>
-                <h2>Add Menu Items</h2>
+            {showForm && (
+                <form onSubmit={selectedMenuItem ? updateHandler : submitHandler} className='w-3 border border-dark p-4'>
+                    <h2>{selectedMenuItem ? "Update Menu Item" : "Add Menu Item"}</h2>
 
-                <div className="form-group">
-                    <label>Item Name</label>
-                    <input type="text" id="itemName" className="form-control" placeholder="Enter Item Name" name="name"
-                        value={menuItem.name} onChange={handleChange} />
-                </div>
+                    <div className="form-group">
+                        <label>Item Name</label>
+                        <input
+                            type="text"
+                            id="itemName"
+                            className="form-control"
+                            placeholder="Enter Item Name"
+                            name="name"
+                            value={menuItem.name}
+                            onChange={handleChange}
+                        />
+                    </div>
 
-                <div className="form-group">
-                    <label>Item Price</label>
-                    <input type="number" id="itemPrice" className="form-control" placeholder="Enter Item Price" name="price"
-                        value={menuItem.price} onChange={handleChange} />
-                </div>
+                    <div className="form-group">
+                        <label>Item Price</label>
+                        <input
+                            type="number"
+                            id="itemPrice"
+                            className="form-control"
+                            placeholder="Enter Item Price"
+                            name="price"
+                            value={menuItem.price}
+                            onChange={handleChange}
+                        />
+                    </div>
 
-                <div className="form-group">
-                    <label >Item Description</label>
-                    <input type="text" id="itemDescription" className="form-control" placeholder="Enter Item Description" name="description"
-                        value={menuItem.description} onChange={handleChange} />
-                </div>
-                {/* Product Image */}
-                <div className="mb-3">
-                    <label for="exampleInputEmail1" className="form-label">MenuItem Image</label>
-                    <input type="file" className="form-control" id="exampleInputEmail1"
-                        aria-describedby="emailHelp" name='menuItemsImage'
-                    />
-                </div>
+                    <div className="form-group">
+                        <label>Item Description</label>
+                        <input
+                            type="text"
+                            id="itemDescription"
+                            className="form-control"
+                            placeholder="Enter Item Description"
+                            name="description"
+                            value={menuItem.description}
+                            onChange={handleChange}
+                        />
+                    </div>
 
-                <button type="submit" className="btn-submit">{selectedMenuItem ? "Update" : "Submit"}</button>
+                    {/* Product Image */}
+                    <div className="mb-3">
+                        <label className="form-label">Menu Item Image</label>
+                        <input
+                            type="file"
+                            className="form-control"
+                            name="menuItemsImage"
+                            onChange={handleImageChange}
+                        />
+                    </div>
 
-            </form> : <></>}
+                    <button type="submit" className="btn-submit">
+                        {selectedMenuItem ? "Update" : "Submit"}
+                    </button>
+                </form>
+            )}
 
+            {/* Toast Container to display notifications */}
+            <ToastContainer />
         </div>
-
-
-
-    )
+    );
 }
 
-export default MenuItemForm
+export default MenuItemForm;
