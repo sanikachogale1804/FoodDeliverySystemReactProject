@@ -2,12 +2,13 @@ import React from 'react';
 import resturant from '../CSS/RestuarantItems.css';
 import { Navigate, useNavigate } from 'react-router-dom';
 
-function RestaurantItem({ id,name, address, phoneNumber }) {
+function RestaurantItem({ id,name, address, phoneNumber,image }) {
   const navigate=useNavigate();
   return (
     <div className="restaurant-container">
       <div className="restaurant-card menu-card">
         <div className="card-body">
+       
           <h5 className="card-title restaurant-name">{name}</h5>
           <p className="card-text restaurant-address">{address}</p>
           <p className="card-text restaurant-price">{phoneNumber}</p>
