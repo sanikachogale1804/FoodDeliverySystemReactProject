@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { addMenuItem, updateMenuItem, uploadProductImage } from '../Services/MenuItemsService';
-import { toast, ToastContainer } from 'react-toastify'; // Correctly importing toast and ToastContainer
-import 'react-toastify/dist/ReactToastify.css'; // Import Toastify CSS
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; 
 
 import menu from '../CSS/MenuItems.css';
 
@@ -12,7 +12,6 @@ function MenuItemForm({ selectedMenuItem, setSelectedMenuItem, onAddMenuItem }) 
     const submitHandler = (e) => {
         e.preventDefault();
 
-        // Simple validation inside the form
         if (!menuItem.name || !menuItem.price || !menuItem.description || !menuItem.menuItemsImage) {
             alert("Please fill out all fields, including the product image.");
             return;
@@ -23,7 +22,6 @@ function MenuItemForm({ selectedMenuItem, setSelectedMenuItem, onAddMenuItem }) 
             return;
         }
 
-        // Proceed with form submission if validation passes
         addMenuItem({
             name: menuItem.name,
             price: menuItem.price,
@@ -35,10 +33,9 @@ function MenuItemForm({ selectedMenuItem, setSelectedMenuItem, onAddMenuItem }) 
             onAddMenuItem();
             setMenuItem({ id: "", name: "", price: "", description: "", menuItemsImage: null });
             
-            // Show success toast notification
             toast.success("Menu item added successfully!", {
-                position: toast.POSITION.TOP_RIGHT, // Correct position usage
-                autoClose: 3000, // Toast will close after 3 seconds
+                position: toast.POSITION.TOP_RIGHT, 
+                autoClose: 3000, 
             });
         });
     };
@@ -46,7 +43,6 @@ function MenuItemForm({ selectedMenuItem, setSelectedMenuItem, onAddMenuItem }) 
     const updateHandler = (e) => {
         e.preventDefault();
 
-        // Simple validation inside the form for update
         if (!menuItem.name || !menuItem.price || !menuItem.description) {
             alert("Please fill out all fields.");
             return;
@@ -57,7 +53,6 @@ function MenuItemForm({ selectedMenuItem, setSelectedMenuItem, onAddMenuItem }) 
             return;
         }
 
-        // Proceed with updating the menu item if validation passes
         updateMenuItem(selectedMenuItem._links.self.href, {
             name: menuItem.name,
             price: menuItem.price,
@@ -69,9 +64,8 @@ function MenuItemForm({ selectedMenuItem, setSelectedMenuItem, onAddMenuItem }) 
             setMenuItem({ id: "", name: "", price: "", description: "", menuItemsImage: null });
             setSelectedMenuItem(null);
 
-            // Show success toast notification after update
             toast.success("Menu item updated successfully!", {
-                autoClose: 3000, // Toast will close after 3 seconds
+                autoClose: 3000,
             });
         });
     };
@@ -162,7 +156,6 @@ function MenuItemForm({ selectedMenuItem, setSelectedMenuItem, onAddMenuItem }) 
                 </form>
             )}
 
-            {/* Toast Container to display notifications */}
             <ToastContainer />
         </div>
     );

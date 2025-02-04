@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { data, useParams } from 'react-router-dom';
 import { getMenuItemsById } from '../Services/MenuItemsService';
 import { getRestaurantsById, getRestaurantsMenu } from './RestaurantService';
+import MenuItemAdmin from '../MenuItems/MenuItemAdmin';
 
 function ResturantItemDetails() {
     const [restuarant, setRestuarant] = useState(null);
@@ -30,21 +31,25 @@ function ResturantItemDetails() {
     }
 
     return (
-        <div className="restaurant-container">
+        <div className="menu-items-container">
+    
             {
-                menuItems.map((r) => {
-
+                menuItems.map(r => {
+                    return (   
+                        <>
+                         <div className="card-body">
+                           <MenuItemAdmin 
+                           name={r.name}
+                           price={r.price}
+                           description={r.description}
+                           image={r.image}
+                           />
+                           </div>
+                        </>
+                    )
                 })
             }
-            <div className="restaurant-card menu-card">
-                <div className="card-body">
-                    <h5 className="card-title restaurant-name">{restuarant.name}</h5>
-                    <p className="card-text restaurant-address">{restuarant.address}</p>
-                    <p className="card-text restaurant-price">{restuarant.phoneNumber}</p>
-                    <button className="btn btn-primary btn-lg menu-btn" >See MenuItems</button>
-                    <button className="btn btn-primary btn-lg menu-btn">Add MenuItems</button>
-                </div>
-            </div>
+           
         </div>
     )
 }

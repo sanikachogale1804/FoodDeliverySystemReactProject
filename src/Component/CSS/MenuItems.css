@@ -155,7 +155,7 @@
 
 /* Secondary Button (Soft Sky Blue) */
 .menu-btn2 {
-  background-color: #74b9ff;  /* Soft sky blue */
+  background-color: #a29bfe;  /* Soft lavender/purple */
   color: white;
   border: none;
   border-radius: 25px;
@@ -167,7 +167,7 @@
   transition: all 0.3s ease;
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin: 5px;
+  margin-left: 4px;
 }
 
 .menu-btn2:hover {

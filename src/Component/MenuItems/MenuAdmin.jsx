@@ -147,8 +147,6 @@ function MenuAdmin({menuItem_link}) {
 
         {/* Menu Items Section */}
         <div className="menu-items-container">
-
-
           {menuitems.filter((item) => {
             return item.name.toLowerCase().includes(searchQuery.toLowerCase());
           }).map(menuItem => {
