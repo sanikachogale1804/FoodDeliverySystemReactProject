@@ -16,6 +16,7 @@ import MenuItemDetails from './Component/MenuItems/MenuItemDetails';
 import Resturant from './Component/Restaurant/Resturant';
 import Contact from './Component/User/Contact';
 import ResturantItemDetails from './Component/Restaurant/ResturantItemDetails';
+import RestuarantItemForm from './Component/Restaurant/RestuarantItemForm';
 
 
 const routes=createBrowserRouter([
@@ -76,6 +77,10 @@ const routes=createBrowserRouter([
   path:"/contact",
   element:<><Navbar/><Contact/></>
 
+},
+{
+  path:"/restaurantItemForm",
+  element:<><RestuarantItemForm/></>
 }
 ])
 

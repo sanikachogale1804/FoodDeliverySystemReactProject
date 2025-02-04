@@ -42,7 +42,7 @@ function ResturantItemDetails() {
                            name={r.name}
                            price={r.price}
                            description={r.description}
-                           image={r.image}
+                           image={r._links.self.href}
                            />
                            </div>
                         </>

@@ -134,7 +134,6 @@ function MenuAdmin({menuItem_link}) {
                   <li class="list-group-item d-flex justify-content-between align-items-start" onClick={()=>{handleCategeory(c._links.self.href)}}>
                     <div class="ms-2 me-auto" >
                       <div class="fw-bold" >{c.categoryName}</div>
-                      
                     </div>
                     <span class="badge bg-primary rounded-pill">14</span>
                   </li>

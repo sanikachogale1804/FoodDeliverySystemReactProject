@@ -123,9 +123,7 @@ function Menu({ menuItem_link,category_link }) {
                   showMenuItemsBasedOnCategory(c._links.self.href)
                 }}>
                   <div class="ms-2 me-auto">
-
                     <div class="fw-bold" >{c.categoryName}</div>
-
                   </div>
                   <span class="badge bg-primary rounded-pill">14</span>
                 </li>

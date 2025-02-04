@@ -34,7 +34,6 @@ function MenuItemForm({ selectedMenuItem, setSelectedMenuItem, onAddMenuItem }) 
             setMenuItem({ id: "", name: "", price: "", description: "", menuItemsImage: null });
             
             toast.success("Menu item added successfully!", {
-                position: toast.POSITION.TOP_RIGHT, 
                 autoClose: 3000, 
             });
         });
