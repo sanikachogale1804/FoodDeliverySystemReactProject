@@ -79,7 +79,7 @@ const routes=createBrowserRouter([
 
 },
 {
-  path:"/restaurantItemForm",
+  path:"/restaurantItemForm/:id",
   element:<><RestuarantItemForm/></>
 }
 ])

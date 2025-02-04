@@ -4,8 +4,9 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
 
 import menu from '../CSS/MenuItems.css';
+import { updateRestuarant } from '../Restaurant/RestaurantService';
 
-function MenuItemForm({ selectedMenuItem, setSelectedMenuItem, onAddMenuItem }) {
+function MenuItemForm({ selectedMenuItem, setSelectedMenuItem, onAddMenuItem ,restaurantId}) {
     const [menuItem, setMenuItem] = useState({ id: "", name: "", price: "", description: "", menuItemsImage: null });
     const [showForm, setShowForm] = useState(true);
 
@@ -30,7 +31,12 @@ function MenuItemForm({ selectedMenuItem, setSelectedMenuItem, onAddMenuItem }) 
             if (menuItem.menuItemsImage) {
                 uploadProductImage(data._links.self.href, menuItem.menuItemsImage);
             }
+            if(onAddMenuItem)
             onAddMenuItem();
+            if(restaurantId)
+            {
+                updateRestuarant(data._links.self.href+"/restaurant",`http://localhost:8080/restaurants/${restaurantId}`)
+            }
             setMenuItem({ id: "", name: "", price: "", description: "", menuItemsImage: null });
             
             toast.success("Menu item added successfully!", {

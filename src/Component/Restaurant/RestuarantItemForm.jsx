@@ -1,14 +1,17 @@
 import React from 'react'
 import { ToastContainer } from 'react-toastify'
 import MenuItemForm from '../MenuItems/MenuItemForm'
+import { useParams } from 'react-router-dom'
 
 function RestuarantItemForm() {
+
+    const {id}=useParams();
 
     
     return (
 
         <div>
-            <MenuItemForm/>
+            <MenuItemForm restaurantId={id}/>
         </div>
         // <div>
         //     <button className='btn btn-primary mb-3'>Add Menu</button>

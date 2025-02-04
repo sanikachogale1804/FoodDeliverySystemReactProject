@@ -12,7 +12,7 @@ function RestaurantItem({ id,name, address, phoneNumber }) {
           <p className="card-text restaurant-address">{address}</p>
           <p className="card-text restaurant-price">{phoneNumber}</p>
           <button className="btn btn-primary btn-lg menu-btn"  onClick={()=>{navigate(`/resturant/${id}`)}}>See MenuItems</button>
-          <button className="btn btn-primary btn-lg menu-btn" onClick={()=>{navigate(`/restaurantItemForm`)}}>Add MenuItems</button>
+          <button className="btn btn-primary btn-lg menu-btn" onClick={()=>{navigate(`/restaurantItemForm/${id}`)}}>Add MenuItems</button>
         </div>
       </div>
     </div>

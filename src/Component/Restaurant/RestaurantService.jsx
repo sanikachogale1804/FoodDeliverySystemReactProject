@@ -23,3 +23,15 @@ export const getRestaurantsMenu=(id)=>{
     .then(data=>data["_embedded"]["menuItems"])
 }
 
+
+export const updateRestuarant=(menuItem_link,restaurant_Link)=>{
+    return fetch(menuItem_link,{
+        method:"PUT",
+        headers:{"Content-Type":"text/uri-list"},
+        body:restaurant_Link
+    }).then(data=>data)
+
+}
+
+
+
